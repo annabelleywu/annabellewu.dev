@@ -5,15 +5,15 @@
   ===================================================================
   HOW IT WORKS
   - GitHub Pages serves this file at https://annabelleywu.github.io
-  - Styling:    assets/css/style.css   (colors, fonts, layout)
-  - Behavior:   assets/js/main.js      (dark mode, mobile menu, fade-in)
-  - Each <section id="..."> is one part of the page. The nav links
-    (href="#about", etc.) scroll to the section with that id.
+  - Styling:   assets/css/style.css  (colors, fonts, spacing)
+  - Behavior:  assets/js/main.js     (nav highlight, mobile menu)
+  - Each <section id="..."> is one part of the page. Nav links like
+    href="#projects" scroll to the section with that id.
 
   HOW TO EDIT
   - Search for "[" — every [bracketed text] is a placeholder to replace.
-  - To add another project/job, copy one whole <article> block and
-    paste it right below the original, then change the text.
+  - To add another job / project / class, copy one whole block
+    (marked with a comment) and paste it right below, then edit.
   - To remove a section, delete its <section>…</section> AND its
     link in the <nav>.
   ===================================================================
@@ -27,220 +27,193 @@
   <title>Annabelle Wu</title>
   <meta name="description" content="[Short description of you for search results]" />
 
-  <!-- Fonts from Google Fonts. Change the font here AND in style.css (--font-sans / --font-mono) -->
+  <!-- Font: Inter from Google Fonts (light 300 weight gives the airy look) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- Runs before the page draws, so dark mode doesn't "flash" white on load -->
-  <script>
-    try {
-      var t = localStorage.getItem('theme');
-      if (t) document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-  </script>
 </head>
 
 <body>
 
   <!-- =========================== NAV BAR ===========================
-       Sticks to the top of the screen. The logo links back to the top. -->
+       Left: initials logo · Center: pill links · Right: Contact button.
+       The "active" pill moves automatically as you scroll (main.js). -->
   <header class="nav">
-    <div class="container nav__inner">
-      <a href="#top" class="nav__logo">annabelle<span class="accent">.dev</span></a>
-      <!-- ↑ [Change "annabelle.dev" to whatever short logo text you like] -->
+    <a href="#home" class="nav__logo">AW</a>
+    <!-- ↑ [Your initials] -->
 
-      <!-- Hamburger button: only visible on phones (see style.css) -->
-      <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav__links">
+      <a href="#home" class="active">Home</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#school">School</a>
+    </nav>
 
-      <nav class="nav__links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <!-- Light/dark mode switch (logic in main.js) -->
-        <button class="theme-toggle" aria-label="Toggle dark mode">◐</button>
-      </nav>
-    </div>
+    <a href="#contact" class="nav__cta">Contact</a>
+
+    <!-- Hamburger button: only visible on phones (see style.css) -->
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">☰</button>
   </header>
 
-  <main id="top">
+  <main>
 
-    <!-- =========================== HERO ===========================
-         The big intro at the top. First thing visitors see. -->
-    <section class="hero container">
-      <p class="hero__hello mono">Hi, my name is</p>
-      <h1 class="hero__name">Annabelle Wu.</h1>
-      <h2 class="hero__tagline">[I build things for the web.]</h2>
-      <p class="hero__blurb">
-        [1–2 sentences about who you are and what you focus on. e.g. "I'm a
-        computer science student at University X who loves building clean,
-        accessible apps. Currently interning at Company Y."]
-      </p>
+    <!-- =========================== HERO =========================== -->
+    <section id="home" class="hero container">
+      <div class="hero__text">
+        <h1 class="hero__name">Annabelle Wu</h1>
+        <p class="hero__subtitle">[Your Major] @ [Your School]</p>
+        <!-- ↑ e.g. "Computer Science & Economics @ University Name" -->
 
-      <div class="hero__buttons">
-        <a class="btn btn--primary" href="#projects">See my work</a>
-        <!-- Put your resume PDF in assets/ and update the filename below -->
-        <a class="btn" href="assets/[resume].pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
+        <!-- Email + location row. Icons are inline SVGs (no files needed). -->
+        <ul class="hero__meta">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:[your-email@example.com]">[your-email@example.com]</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span>[City, State]</span>
+          </li>
+        </ul>
 
-      <!-- Social links — replace each href with your real profile URL -->
-      <ul class="socials">
-        <li><a href="https://github.com/annabelleywu" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/[your-linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:[your-email@example.com]">Email</a></li>
-      </ul>
-    </section>
-
-    <!-- =========================== ABOUT =========================== -->
-    <section id="about" class="section container reveal">
-      <h3 class="section__title"><span class="mono accent">01.</span> About me</h3>
-
-      <div class="about">
-        <div class="about__text">
-          <p>[Paragraph 1: Your background — where you're from, what you study, how you got into coding / your field.]</p>
-          <p>[Paragraph 2: What you're working on now, what excites you, what kind of roles or projects you're looking for.]</p>
-          <p>[Paragraph 3 (optional): A fun fact or hobbies outside of work.]</p>
-
-          <p>Technologies I've been working with recently:</p>
-          <!-- Skills list — add/remove <li> items freely -->
-          <ul class="skills mono">
-            <li>[JavaScript]</li>
-            <li>[Python]</li>
-            <li>[React]</li>
-            <li>[Node.js]</li>
-            <li>[SQL]</li>
-            <li>[Figma]</li>
-          </ul>
-        </div>
-
-        <!-- Profile photo: drop a picture into assets/img/ and update src.
-             Until then, the gray box with your initials shows instead. -->
-        <div class="about__photo">
-          <img src="assets/img/[profile].jpg" alt="Photo of Annabelle Wu"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
-          <div class="about__photo-fallback">AW</div>
+        <!-- Social icons — replace the hrefs with your real profile URLs -->
+        <div class="hero__socials">
+          <a href="https://github.com/annabelleywu" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/[your-linkedin]" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          </a>
         </div>
       </div>
+
+      <!-- IMAGE PLACEHOLDER
+           When you have a picture/illustration, replace this whole <div> with:
+           <img class="hero__art" src="assets/img/[your-image].png" alt="Illustration of Annabelle" /> -->
+      <div class="hero__art hero__art--placeholder">[image goes here]</div>
     </section>
 
     <!-- ======================== EXPERIENCE ========================
-         A vertical timeline. Copy an <article class="job"> block to add more.
-         Newest job goes on top. -->
-    <section id="experience" class="section container reveal">
-      <h3 class="section__title"><span class="mono accent">02.</span> Experience</h3>
+         Grouped by YEAR. Each year has one or more roles.
+         - To add a role to a year: copy an <article class="role"> block.
+         - To add a new year: copy a whole <div class="year-group"> block.
+         Newest year goes on top. -->
+    <section id="experience" class="section container">
+      <h2 class="section__title">Experience</h2>
 
       <div class="timeline">
 
-        <!-- ---- Job 1 ---- -->
-        <article class="job">
-          <p class="job__date mono">[Month Year] — Present</p>
-          <h4 class="job__title">[Job Title] <span class="accent">@ [Company]</span></h4>
-          <ul class="job__points">
-            <li>[What you did + the impact, e.g. "Built X feature used by 10k users".]</li>
-            <li>[Another accomplishment or responsibility.]</li>
-            <li>[Tools/tech you used: e.g. React, AWS, Python.]</li>
-          </ul>
-        </article>
+        <!-- ---------- Year group ---------- -->
+        <div class="year-group">
+          <div class="year">[2026]</div>
+          <div class="roles">
+            <!-- Role -->
+            <article class="role">
+              <h3 class="role__title">[Job Title]</h3>
+              <p class="role__org">[Company / Lab]</p>
+              <p class="role__place">[City, ST]</p>
+              <!-- Optional details — delete the <ul> if you want it minimal -->
+              <ul class="role__points">
+                <li>[What you did + the impact.]</li>
+              </ul>
+            </article>
+            <!-- Role -->
+            <article class="role">
+              <h3 class="role__title">[Job Title]</h3>
+              <p class="role__org">[Company / Lab]</p>
+              <p class="role__place">[City, ST]</p>
+            </article>
+          </div>
+        </div>
 
-        <!-- ---- Job 2 ---- -->
-        <article class="job">
-          <p class="job__date mono">[Month Year] — [Month Year]</p>
-          <h4 class="job__title">[Job Title] <span class="accent">@ [Company]</span></h4>
-          <ul class="job__points">
-            <li>[Accomplishment.]</li>
-            <li>[Accomplishment.]</li>
-          </ul>
-        </article>
-
-        <!-- ---- Education (optional — delete if you don't want it here) ---- -->
-        <article class="job">
-          <p class="job__date mono">[Year] — [Year]</p>
-          <h4 class="job__title">[Degree, e.g. B.S. Computer Science] <span class="accent">@ [School]</span></h4>
-          <ul class="job__points">
-            <li>[Relevant coursework, clubs, honors, GPA if you want.]</li>
-          </ul>
-        </article>
+        <!-- ---------- Year group ---------- -->
+        <div class="year-group">
+          <div class="year">[2025]</div>
+          <div class="roles">
+            <article class="role">
+              <h3 class="role__title">[Job Title]</h3>
+              <p class="role__org">[Company]</p>
+              <p class="role__place">[City, ST]</p>
+            </article>
+          </div>
+        </div>
 
       </div>
     </section>
 
     <!-- ========================= PROJECTS =========================
-         A grid of cards. Copy an <article class="card"> block to add more.
-         The grid automatically reflows (3 → 2 → 1 columns) on smaller screens. -->
-    <section id="projects" class="section container reveal">
-      <h3 class="section__title"><span class="mono accent">03.</span> Things I've built</h3>
+         Copy an <article class="card"> block to add more.
+         The grid reflows (2 → 1 columns) automatically on small screens. -->
+    <section id="projects" class="section container">
+      <h2 class="section__title">Projects</h2>
 
       <div class="cards">
 
-        <!-- ---- Project 1 ---- -->
+        <!-- ---- Project ---- -->
         <article class="card">
-          <div class="card__top">
-            <span class="card__icon">📁</span>
-            <div class="card__links">
-              <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
-              <a href="[https://live-demo-link.com]" target="_blank" rel="noopener" aria-label="Live demo">Live ↗</a>
-            </div>
+          <h3 class="card__title">[Project Name]</h3>
+          <p class="card__desc">[1–2 sentences: what it does and why you built it.]</p>
+          <ul class="card__tags"><li>[Python]</li><li>[React]</li></ul>
+          <div class="card__links">
+            <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code →</a>
+            <a href="[https://demo-link.com]" target="_blank" rel="noopener">Live →</a>
           </div>
-          <h4 class="card__title">[Project Name]</h4>
-          <p class="card__desc">[1–2 sentences: what it does, who it's for, what problem it solves.]</p>
-          <ul class="card__tags mono">
-            <li>[React]</li><li>[Firebase]</li><li>[CSS]</li>
-          </ul>
         </article>
 
-        <!-- ---- Project 2 ---- -->
+        <!-- ---- Project ---- -->
         <article class="card">
-          <div class="card__top">
-            <span class="card__icon">📁</span>
-            <div class="card__links">
-              <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </div>
-          <h4 class="card__title">[Project Name]</h4>
+          <h3 class="card__title">[Project Name]</h3>
           <p class="card__desc">[Short description.]</p>
-          <ul class="card__tags mono">
-            <li>[Python]</li><li>[Flask]</li>
-          </ul>
-        </article>
-
-        <!-- ---- Project 3 ---- -->
-        <article class="card">
-          <div class="card__top">
-            <span class="card__icon">📁</span>
-            <div class="card__links">
-              <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code ↗</a>
-            </div>
+          <ul class="card__tags"><li>[Tech]</li><li>[Tech]</li></ul>
+          <div class="card__links">
+            <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code →</a>
           </div>
-          <h4 class="card__title">[Project Name]</h4>
-          <p class="card__desc">[Short description.]</p>
-          <ul class="card__tags mono">
-            <li>[Tech]</li><li>[Tech]</li>
-          </ul>
         </article>
 
       </div>
     </section>
 
+    <!-- ========================== SCHOOL ==========================
+         Uses the same year timeline style as Experience. -->
+    <section id="school" class="section container">
+      <h2 class="section__title">School</h2>
+
+      <div class="timeline">
+        <div class="year-group">
+          <div class="year">[2024 – 2028]</div>
+          <div class="roles">
+            <article class="role">
+              <h3 class="role__title">[School Name]</h3>
+              <p class="role__org">[Degree, e.g. B.A. in Computer Science]</p>
+              <p class="role__place">[GPA / honors — or delete this line]</p>
+              <ul class="role__points">
+                <li><strong>Coursework:</strong> [Class], [Class], [Class]</li>
+                <li><strong>Activities:</strong> [Club], [Team], [Organization]</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========================= CONTACT ========================== -->
-    <section id="contact" class="section container contact reveal">
-      <p class="mono accent">04. What's next?</p>
-      <h3 class="contact__title">Get in touch</h3>
+    <section id="contact" class="section container contact">
+      <h2 class="section__title">Contact</h2>
       <p class="contact__text">
-        [A short invite, e.g. "I'm currently looking for summer 2027 internships.
-        Whether you have a question or just want to say hi, my inbox is open!"]
+        [A short invite, e.g. "I'm always happy to chat about internships,
+        research, or anything else — feel free to reach out!"]
       </p>
-      <a class="btn btn--primary" href="mailto:[your-email@example.com]">Say hello</a>
+      <a class="btn" href="mailto:[your-email@example.com]">Email me</a>
     </section>
 
   </main>
 
   <!-- =========================== FOOTER =========================== -->
-  <footer class="footer mono">
+  <footer class="footer">
     <!-- The year is filled in automatically by main.js -->
-    <p>© <span id="year"></span> Annabelle Wu · [Built with HTML &amp; CSS, hosted on GitHub Pages]</p>
+    © <span id="year"></span> Annabelle Wu
   </footer>
 
   <script src="assets/js/main.js"></script>
