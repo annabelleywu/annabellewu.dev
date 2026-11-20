@@ -1,3 +1,15 @@
-theme: jekyll-theme-minimal
+# ---------------------------------------------------------------
+# _config.yml — GitHub Pages / Jekyll settings
+# ---------------------------------------------------------------
+# GitHub Pages runs Jekyll on this repo automatically. Because the
+# site is a hand-written index.html (not a theme), we don't set a
+# `theme:` here — the look comes from assets/css/style.css.
+#
+# title/description are used by search engines & link previews
+# (see the <meta> tags at the top of index.html).
 title: Annabelle Wu
-description: Bookmark this to keep an eye on my project updates!
+description: "[One-line description of you, e.g. 'Student & developer building things for the web']"
+
+# Files Jekyll should NOT publish to the live site
+exclude:
+  - README.md

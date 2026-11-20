@@ -1,0 +1,153 @@
+/* ===================================================================
+   style.css — shared styling for ALL pages
+   (index.html, experience.html, projects.html)
+   ===================================================================
+   QUICK CUSTOMIZING
+   - Colors, font and page width are in ":root" right below.
+     Change a value once and every page updates.
+   - --accent is the crimson (logo, active nav link, link hovers,
+     timeline dots).
+   =================================================================== */
+
+/* ---------- 1. Colors, font, sizes ---------- */
+:root {
+  --bg:        #ffffff;   /* page background */
+  --text:      #161616;   /* main text */
+  --text-dim:  #8a8a8a;   /* years, locations, small notes */
+  --line:      #e6e6e6;   /* thin lines (timeline, underlines) */
+  --accent:    #9e1b32;   /* dark crimson — try #8b0000 (darker) or #b31b1b (brighter) */
+
+  --font: "DM Sans", system-ui, -apple-system, sans-serif;
+  --max-width: 780px;     /* width of the text column — smaller = more minimal */
+}
+
+/* ---------- 2. Base / reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+.page { max-width: var(--max-width); margin: 0 auto; padding: 0 24px 80px; }
+
+/* Underlined text links (used inside paragraphs and lists).
+   Underline is thin & gray, turns crimson on hover. */
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: color .15s, text-decoration-color .15s;
+}
+.link:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* ---------- 3. Top nav (same on every page) ---------- */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 32px 0;
+}
+.nav__logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); letter-spacing: -.02em; }
+.nav__links { display: flex; gap: 28px; font-size: .95rem; }
+.nav__links a { color: var(--text-dim); transition: color .15s; }
+.nav__links a:hover,
+.nav__links a.active { color: var(--accent); }   /* "active" = the page you're on */
+
+/* ---------- 4. Hero (home page header) ---------- */
+.hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 56px 0 24px; }
+/* Name: font-weight 400 = regular. Try 500 for a bit heavier, 700 for bold. */
+.hero__name { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -.02em; }
+.hero__subtitle { color: var(--text-dim); font-size: 1.15rem; margin-top: 12px; }
+
+/* [github] [linkedin] [email] bracket links */
+.brackets { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 20px; font-size: .95rem; }
+.brackets a { color: var(--text-dim); transition: color .15s; }
+.brackets a:hover { color: var(--accent); }
+.brackets a::before { content: "["; }
+.brackets a::after  { content: "]"; }
+
+/* Image placeholder — delete this block + the <div> in index.html
+   if you decide not to use a picture. */
+.hero__art { width: 150px; flex-shrink: 0; }
+/* Your real image: cropped to a circle. For a square with rounded
+   corners instead, change 50% to 16px. */
+img.hero__art { aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
+.hero__art--placeholder {
+  aspect-ratio: 1; display: grid; place-items: center; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: 50%;
+  color: var(--text-dim); font-size: .75rem;
+}
+
+/* ---------- 5. Sections ---------- */
+.section { padding-top: 56px; }
+/* Small bold UPPERCASE headings like "ABOUT" */
+.section__title {
+  font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.prose p + p { margin-top: 18px; }   /* space between About paragraphs */
+
+/* Page title on Experience / Projects pages */
+.page-title { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 700; letter-spacing: -.03em; padding-top: 40px; }
+.page-intro { color: var(--text-dim); margin-top: 8px; }
+
+/* ---------- 6. Row list (Education, Awards, Projects) ----------
+   Each row:  [ title + optional note ] ............ [ year ] */
+.rows li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 10px 0;
+}
+.rows .year { color: var(--text-dim); font-size: .9rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rows .note { display: block; color: var(--text-dim); font-size: .92rem; line-height: 1.55; margin-top: 2px; }
+.rows--spaced li { padding: 18px 0; }    /* roomier version used on Projects page */
+
+/* "See experience →" links at the bottom of the home page */
+.more { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-top: 56px; }
+.more a { color: var(--text-dim); transition: color .15s; }
+.more a:hover { color: var(--accent); }
+
+/* ---------- 7. Year timeline (Experience page) ----------
+   Layout of each year-group:   [ year ]  •│  [ roles ] */
+.timeline { padding-top: 40px; }
+.year-group { display: grid; grid-template-columns: 130px 1fr; }
+.year-group > .year { color: var(--text-dim); font-size: .95rem; padding-top: 2px; }
+
+.roles {
+  position: relative;
+  padding-left: 44px; padding-bottom: 44px;
+  border-left: 1px solid var(--line);      /* vertical line */
+  display: grid; gap: 28px;
+}
+.year-group:last-child .roles { border-left-color: transparent; }  /* line ends at the last year */
+.roles::before {                           /* dot next to each year */
+  content: ""; position: absolute; left: -4px; top: 11px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+}
+
+.role__title { font-size: 1.1rem; font-weight: 500; line-height: 1.4; }
+.role__org   { margin-top: 2px; }
+.role__place { color: var(--text-dim); font-size: .92rem; }
+.role__points { color: var(--text-dim); font-size: .95rem; margin-top: 4px; }
+
+/* ---------- 8. Footer ---------- */
+.footer { color: var(--text-dim); font-size: .8rem; padding-top: 80px; }
+
+/* ---------- 9. Phones ---------- */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .page { padding: 0 24px 60px; }
+  .nav { padding: 20px 0; }
+  .nav__links { gap: 18px; }
+  .hero { flex-direction: column-reverse; padding-top: 32px; }  /* image moves above name */
+  .hero__art { width: 100px; }
+  .year-group { grid-template-columns: 1fr; }
+  .year-group > .year { margin-bottom: 8px; }
+  .roles { padding-left: 24px; }
+}

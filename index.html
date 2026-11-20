@@ -1,0 +1,146 @@
+<!doctype html>
+<!--
+  ===================================================================
+  index.html — HOME page (about, education, recognition)
+  ===================================================================
+  THE SITE HAS 3 PAGES that share one stylesheet:
+    index.html       → home   (https://annabellewu.dev/)
+    experience.html  → jobs, research, fellowships
+    projects.html    → projects & papers (PAUSED: page still exists at
+                       /projects.html but nothing links to it yet)
+  Styling for all of them: assets/css/style.css
+  (The "?v=3" after style.css in each page forces browsers to load the
+   newest version. If a style change doesn't show up, bump the number (v=5, v=6, …)
+   in all 3 pages.)
+
+  The NAV and FOOTER are copied into each page. If you change a nav
+  link, change it in all 3 files.
+
+  HOW TO EDIT
+  - Search for "[" — every [bracketed text] is a placeholder.
+  - To add a list item, copy a whole <li>…</li> and paste below it.
+  - Links inside text use class="link" to get the thin underline.
+  ===================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Annabelle Wu</title>
+  <meta name="description" content="Annabelle Wu — Statistics & Computer Science @ Harvard University" />
+
+  <!-- Font: DM Sans from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ============================ NAV ============================
+         class="active" marks the page you're on (shows in crimson). -->
+    <header class="nav">
+      <a href="index.html" class="nav__logo">AW</a>
+      <nav class="nav__links">
+        <a href="index.html" class="active">about</a>
+        <a href="experience.html">experience</a>
+        <!-- PAUSED: remove these comment marks to show Projects in the nav again
+        <a href="projects.html">projects</a> -->
+      </nav>
+    </header>
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div>
+        <h1 class="hero__name">Annabelle Wu</h1>
+        <p class="hero__subtitle">Statistics &amp; Computer Science @ Harvard</p>
+
+        <!-- Bracket links: the [ ] are added automatically by the CSS -->
+        <div class="brackets">
+          <a href="mailto:annabelle_wu@college.harvard.edu">email</a>
+          <a href="https://www.linkedin.com/in/annabellewu26" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://github.com/annabelleywu" target="_blank" rel="noopener">github</a>
+          <!-- <a href="assets/[resume].pdf" target="_blank">resume</a>  ← uncomment once you upload a resume -->
+        </div>
+      </div>
+
+      <!-- IMAGE (removed for now) — to add a photo later, put it in assets/img/
+           and paste this line right here:
+           <img class="hero__art" src="assets/img/profile.jpg" alt="Annabelle Wu" />
+           It shows as a small circle on the right of your name. -->
+    </section>
+
+    <!-- =========================== ABOUT ===========================
+         A few short paragraphs. Wrap anything you want to link in:
+         <a class="link" href="URL" target="_blank" rel="noopener">text</a> -->
+    <section class="section prose">
+      <h2 class="section__title">About</h2>
+      <p>
+        Undergraduate at
+        <a class="link" href="https://college.harvard.edu" target="_blank" rel="noopener">Harvard University</a>
+        studying Statistics & Computer Science. Currently interested in Product Management, Venture Capital, and Quantitative Finance.
+      </p>
+      <p>Previously, I attended 
+      <a class="link" href="https://www.andover.edu" target="_blank" rel="noopener">Phillips Academy</a>,
+        where I conducted orchestra, researched as an Abbot Independent Scholar, and served as an Alumni Representative.
+      </p>
+      <p>Big fan of
+        <a class="link" href="https://www.youtube.com/watch?v=5oWyMakvQew&list=RD5oWyMakvQew&start_radio=1" target="_blank" rel="noopener">Fleetwood Mac</a>,
+        <a class="link" href="https://en.wikipedia.org/wiki/A_Gentleman_in_Moscow target="_blank" rel="noopener">A Gentleman in Moscow</a>, and old Karajan recordings.</p></p>
+    </section>
+
+    <!-- ========================= EDUCATION ========================= -->
+    <section class="section">
+      <h2 class="section__title">Education</h2>
+      <ul class="rows">
+        <li>
+          <span>
+            Harvard University
+          </span>
+          <span class="year">2026–2030</span>
+        </li>
+        <!-- Optional: high school — copy the <li> above, or delete this comment -->
+        <li>
+          <span>
+            Phillips Academy 
+          </span>
+          <span class="year">2022–2026</span>
+        </li>
+        <li>
+          <span>
+            Fay School
+          </span>
+          <span class="year">2022–2026</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ======================== RECOGNITION ========================
+         Awards, honors, scholarships. Newest first.
+         - To make an item a link, wrap the text in <a class="link" href="...">…</a>
+         - Leave the year <span> empty if you don't want a year. -->
+    <!--
+    <section class="section">
+      <h2 class="section__title">Recognition</h2>
+      <ul class="rows">
+        <li><span>Timothy G. Taylor Trust Scholarship</span><span class="year">[2026]</span></li>
+        <li><span>[Award / honor]</span><span class="year">[2025]</span></li>
+        <li><span>[Award / honor]</span><span class="year">[2025]</span></li>
+      </ul>
+    </section>
+
+    <!-- Links to the other pages -->
+    <div class="more">
+      <a href="experience.html">See experience →</a>
+      <!-- PAUSED: remove these comment marks to show this link again
+      <a href="projects.html">See projects →</a> -->
+    </div>
+
+    <!-- =========================== FOOTER =========================== -->
+    <footer class="footer">© 2026 Annabelle Wu</footer>
+
+  </div>
+</body>
+</html>
