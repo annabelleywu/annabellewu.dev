@@ -62,7 +62,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- 4. Hero (home page header) ---------- */
 .hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 56px 0 24px; }
-.hero__name { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
+/* Name: font-weight 400 = regular. Try 500 for a bit heavier, 700 for bold. */
+.hero__name { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 400; line-height: 1.1; letter-spacing: -.02em; }
 .hero__subtitle { color: var(--text-dim); font-size: 1.15rem; margin-top: 12px; }
 
 /* [github] [linkedin] [email] bracket links */
