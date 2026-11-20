@@ -1,211 +1,125 @@
 <!doctype html>
 <!--
   ===================================================================
-  index.html — the whole website lives on this one page.
+  index.html — HOME page (about, education, recognition)
   ===================================================================
-  HOW IT WORKS
-  - GitHub Pages serves this file at https://annabelleywu.github.io
-  - Styling:   assets/css/style.css  (colors, fonts, spacing)
-  - Behavior:  assets/js/main.js     (nav highlight, mobile menu)
-  - Each <section id="..."> is one part of the page. Nav links like
-    href="#projects" scroll to the section with that id.
+  THE SITE HAS 3 PAGES that share one stylesheet:
+    index.html       → home   (https://annabellewu.dev/)
+    experience.html  → jobs, research, fellowships
+    projects.html    → projects & papers
+  Styling for all of them: assets/css/style.css
+
+  The NAV and FOOTER are copied into each page. If you change a nav
+  link, change it in all 3 files.
 
   HOW TO EDIT
-  - Search for "[" — every [bracketed text] is a placeholder to replace.
-  - To add another job / project / class, copy one whole block
-    (marked with a comment) and paste it right below, then edit.
-  - To remove a section, delete its <section>…</section> AND its
-    link in the <nav>.
+  - Search for "[" — every [bracketed text] is a placeholder.
+  - To add a list item, copy a whole <li>…</li> and paste below it.
+  - Links inside text use class="link" to get the thin underline.
   ===================================================================
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Browser tab title + the text Google / link previews show -->
   <title>Annabelle Wu</title>
-  <meta name="description" content="[Statistics @ Harvard University]" />
+  <meta name="description" content="Annabelle Wu — Statistics & Computer Science @ Harvard University" />
 
-  <!-- Font: Inter from Google Fonts (light 300 weight gives the airy look) -->
+  <!-- Font: DM Sans from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
+  <div class="page">
 
-  <!-- =========================== NAV BAR ===========================
-       Left: initials logo · Center: pill links · Right: Contact button.
-       The "active" pill moves automatically as you scroll (main.js). -->
-  <header class="nav">
-    <a href="#home" class="nav__logo">AW</a>
-    <!-- ↑ [A. Wu] -->
+    <!-- ============================ NAV ============================
+         class="active" marks the page you're on (shows in crimson). -->
+    <header class="nav">
+      <a href="index.html" class="nav__logo">AW</a>
+      <nav class="nav__links">
+        <a href="index.html" class="active">about</a>
+        <a href="experience.html">experience</a>
+        <a href="projects.html">projects</a>
+      </nav>
+    </header>
 
-    <nav class="nav__links">
-      <a href="#home" class="active">Home</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#school">School</a>
-    </nav>
-
-    <a href="#contact" class="nav__cta">Contact</a>
-
-    <!-- Hamburger button: only visible on phones (see style.css) -->
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">☰</button>
-  </header>
-
-  <main>
-
-    <!-- =========================== HERO =========================== -->
-    <section id="home" class="hero container">
-      <div class="hero__text">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div>
         <h1 class="hero__name">Annabelle Wu</h1>
-        <p class="hero__subtitle">Statistics @ Harvard University</p>
-        <!-- ↑ e.g. "Computer Science & Economics @ University Name" -->
+        <p class="hero__subtitle">Statistics &amp; Computer Science @ Harvard</p>
 
-        <!-- Email + location row. Icons are inline SVGs (no files needed). -->
-        <ul class="hero__meta">
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <a href="mailto:annabelle_wu@college.harvard.edu">annabelle_wu@college.harvard.edu</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            <span>Cambridge, MA</span>
-          </li>
-        </ul>
-
-        <!-- Social icons — replace the hrefs with your real profile URLs -->
-        <div class="hero__socials">
-          <a href="https://github.com/annabelleywu" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/annabellewu26" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-          </a>
+        <!-- Bracket links: the [ ] are added automatically by the CSS -->
+        <div class="brackets">
+          <a href="mailto:annabelle_wu@college.harvard.edu">email</a>
+          <a href="https://www.linkedin.com/in/annabellewu26" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://github.com/annabelleywu" target="_blank" rel="noopener">github</a>
+          <!-- <a href="assets/[resume].pdf" target="_blank">resume</a>  ← uncomment once you upload a resume -->
         </div>
       </div>
 
-      <!-- IMAGE PLACEHOLDER
-           When you have a picture/illustration, replace this whole <div> with:
-           <img class="hero__art" src="assets/img/[your-image].png" alt="Illustration of Annabelle" /> -->
-      <div class="hero__art hero__art--placeholder">[image goes here]</div>
+      <!-- IMAGE PLACEHOLDER — when you have a picture, replace this <div> with:
+           <img class="hero__art" src="assets/img/[your-image].png" alt="Annabelle Wu" />
+           (it'll be a small circle; delete this block entirely for no image) -->
+      <div class="hero__art hero__art--placeholder">[image]</div>
     </section>
 
-    <!-- ======================== EXPERIENCE ========================
-         Grouped by YEAR. Each year has one or more roles.
-         - To add a role to a year: copy an <article class="role"> block.
-         - To add a new year: copy a whole <div class="year-group"> block.
-         Newest year goes on top. -->
-    <section id="experience" class="section container">
-      <h2 class="section__title">Experience</h2>
-
-      <div class="timeline">
-
-        <!-- ---------- Year group ---------- -->
-        <div class="year-group">
-          <div class="year">[2026]</div>
-          <div class="roles">
-            <!-- Role -->
-            <article class="role">
-              <h3 class="role__title">AI / ML Fellow</h3>
-              <p class="role__org">Break Through Tech</p>
-            </article>
-            <!-- Role -->
-            <article class="role">
-              <h3 class="role__title">WiSE</h3>
-              <p class="role__org">Jane Street</p>
-              <!-- Optional details — delete the <ul> if you want it minimal -->
-              <ul class="role__points">
-                <li>Probability and market-making</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-
-        <!-- ---------- Year group ---------- -->
-        <div class="year-group">
-          <div class="year">[2025]</div>
-          <div class="roles">
-            <article class="role">
-              <h3 class="role__title">Researcher</h3>
-              <p class="role__org">Phillips Academy Abbot Independent Scholars Program</p>
-              <p class="role__place">Andover, MA</p>
-            </article>
-            <!-- Role -->
-            <article class="role">
-              <h3 class="role__title">Teaching Fellow</h3>
-              <p class="role__org">MUS550</p>
-            </article>
-          </div>
-        </div>
-
-      </div>
+    <!-- =========================== ABOUT ===========================
+         A few short paragraphs. Wrap anything you want to link in:
+         <a class="link" href="URL" target="_blank" rel="noopener">text</a> -->
+    <section class="section prose">
+      <h2 class="section__title">About</h2>
+      <p>
+        I study Statistics and Computer Science at
+        <a class="link" href="https://college.harvard.edu" target="_blank" rel="noopener">Harvard</a>,
+        based in Cambridge, MA.
+      </p>
+      <p>[What you're working on / interested in right now — e.g. "I'm currently an AI/ML Fellow at Break Through Tech and interested in quantitative finance and probability."]</p>
+      <p>[Background — e.g. research you did before college, where you went to school.]</p>
+      <p>[Something personal — where you grew up, music, books, hobbies.]</p>
     </section>
 
-    <!-- ========================= PROJECTS =========================
-         Copy an <article class="card"> block to add more.
-         The grid reflows (2 → 1 columns) automatically on small screens. -->
-    <section id="projects" class="section container">
-      <h2 class="section__title">Projects</h2>
-
-      <div class="cards">
-
-        <!-- ---- Project ---- -->
-        <article class="card">
-          <h3 class="card__title">Tonality and Text: A Harmonic and Literary Analysis of Schubert's "Winterreise"</h3>
-          <p class="card__desc">Facult Mentor: Dr. Derek Jacoby, Phillips Academy</p>
-          <div class="card__links">
-            <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code →</a>
-            <a href="[https://demo-link.com]" target="_blank" rel="noopener">Live →</a>
-          </div>
-        </article>
-
-        <!-- ---- Project ---- -->
-        <article class="card">
-          <h3 class="card__title">[Project Name]</h3>
-          <p class="card__desc">[Short description.]</p>
-          <ul class="card__tags"><li>[Tech]</li><li>[Tech]</li></ul>
-          <div class="card__links">
-            <a href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">Code →</a>
-          </div>
-        </article>
-
-      </div>
+    <!-- ========================= EDUCATION ========================= -->
+    <section class="section">
+      <h2 class="section__title">Education</h2>
+      <ul class="rows">
+        <li>
+          <span>
+            Harvard University — A.B. Statistics &amp; Computer Science, Honors Track
+            <span class="note">Coursework: Probability, Statistical Inference, Multivariable Calculus, Linear Algebra, Startups: From Idea to Exit</span>
+            <span class="note">Activities: Smart Woman Securities, Harvard Financial Analysts Club (Quant), Women in CS</span>
+          </span>
+          <span class="year">2026–2030</span>
+        </li>
+        <!-- Optional: high school — copy the <li> above, or delete this comment -->
+      </ul>
     </section>
 
-    <!-- ========================== SCHOOL ==========================
-         Uses the same year timeline style as Experience. -->
-    <section id="school" class="section container">
-      <h2 class="section__title">School</h2>
-
-      <div class="timeline">
-        <div class="year-group">
-          <div class="year">2026-2030</div>
-          <div class="roles">
-            <article class="role">
-              <h3 class="role__title">Harvard University</h3>
-              <p class="role__org">A.B. Statistics & Computer Science</p>
-              <p class="role__place">Honors Track</p>
-              <ul class="role__points">
-                <li><strong>Coursework:</strong> Probability, Statistical Inference, Multivariable Calculus, Linear Algebra, Startups: From Idea to Exit</li>
-                <li><strong>Activities:</strong> Smart Woman Securities, Harvard Financial Analysts Club (Quant), Women in CS</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </div>
+    <!-- ======================== RECOGNITION ========================
+         Awards, honors, scholarships. Newest first.
+         - To make an item a link, wrap the text in <a class="link" href="...">…</a>
+         - Leave the year <span> empty if you don't want a year. -->
+    <section class="section">
+      <h2 class="section__title">Recognition</h2>
+      <ul class="rows">
+        <li><span>[Award / honor]</span><span class="year">[2026]</span></li>
+        <li><span>[Award / honor]</span><span class="year">[2025]</span></li>
+        <li><span>[Award / honor]</span><span class="year">[2025]</span></li>
+      </ul>
     </section>
 
-  <!-- =========================== FOOTER =========================== -->
-  <footer class="footer">
-    <!-- The year is filled in automatically by main.js -->
-    © <span id="year"></span> Annabelle Wu
-  </footer>
+    <!-- Links to the other pages -->
+    <div class="more">
+      <a href="experience.html">See experience →</a>
+      <a href="projects.html">See projects →</a>
+    </div>
 
-  <script src="assets/js/main.js"></script>
+    <!-- =========================== FOOTER =========================== -->
+    <footer class="footer">© 2026 Annabelle Wu</footer>
+
+  </div>
 </body>
 </html>

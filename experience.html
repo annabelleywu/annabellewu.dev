@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+  ===================================================================
+  experience.html — EXPERIENCE page (year timeline)
+  ===================================================================
+  Grouped by YEAR, newest on top:
+  - Add a role inside a year → copy an <article class="role"> block.
+  - Add a new year           → copy a whole <div class="year-group"> block.
+  - Each role can have: title, organization, place, and a short note.
+    Delete any line you don't need.
+  ===================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience · Annabelle Wu</title>
+  <meta name="description" content="Experience — Annabelle Wu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- NAV (same on every page — "active" is on Experience here) -->
+    <header class="nav">
+      <a href="index.html" class="nav__logo">AW</a>
+      <nav class="nav__links">
+        <a href="index.html">about</a>
+        <a href="experience.html" class="active">experience</a>
+        <a href="projects.html">projects</a>
+      </nav>
+    </header>
+
+    <h1 class="page-title">Experience</h1>
+    <p class="page-intro">[Optional one-liner, e.g. "Research, fellowships, and teaching." — or delete this line]</p>
+
+    <div class="timeline">
+
+      <!-- ---------- Year group ---------- -->
+      <div class="year-group">
+        <div class="year">[2026]</div>
+        <div class="roles">
+          <article class="role">
+            <h3 class="role__title">AI / ML Fellow</h3>
+            <p class="role__org">Break Through Tech</p>
+          </article>
+          <article class="role">
+            <h3 class="role__title">WiSE</h3>
+            <p class="role__org">Jane Street</p>
+            <p class="role__points">Probability and market-making</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- ---------- Year group ---------- -->
+      <div class="year-group">
+        <div class="year">2025</div>
+        <div class="roles">
+          <article class="role">
+            <h3 class="role__title">Researcher</h3>
+            <p class="role__org">Phillips Academy Abbot Independent Scholars Program</p>
+            <p class="role__place">Andover, MA</p>
+          </article>
+          <article class="role">
+            <h3 class="role__title">Teaching Fellow</h3>
+            <p class="role__org">MUS550</p>
+          </article>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer">© 2026 Annabelle Wu</footer>
+  </div>
+</body>
+</html>

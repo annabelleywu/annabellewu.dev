@@ -1,0 +1,68 @@
+<!doctype html>
+<!--
+  ===================================================================
+  projects.html — PROJECTS page (simple list)
+  ===================================================================
+  Each project is one <li>:
+    - title (make it a link with class="link" if there's a URL)
+    - .note lines underneath for a description / mentor / tech
+    - year on the right
+  Copy a whole <li>…</li> block to add another project. Newest first.
+  ===================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects · Annabelle Wu</title>
+  <meta name="description" content="Projects — Annabelle Wu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- NAV (same on every page — "active" is on Projects here) -->
+    <header class="nav">
+      <a href="index.html" class="nav__logo">AW</a>
+      <nav class="nav__links">
+        <a href="index.html">about</a>
+        <a href="experience.html">experience</a>
+        <a href="projects.html" class="active">projects</a>
+      </nav>
+    </header>
+
+    <h1 class="page-title">Projects</h1>
+    <p class="page-intro">[Optional one-liner, e.g. "Research, papers, and things I've built." — or delete this line]</p>
+
+    <ul class="rows rows--spaced" style="padding-top: 32px;">
+
+      <!-- ---- Project ---- -->
+      <li>
+        <span>
+          <!-- To link the title: <a class="link" href="[URL to paper/PDF]" target="_blank" rel="noopener">Title</a> -->
+          Tonality and Text: A Harmonic and Literary Analysis of Schubert's <em>Winterreise</em>
+          <span class="note">Faculty Mentor: Dr. Derek Jacoby, Phillips Academy</span>
+        </span>
+        <span class="year">[2025]</span>
+      </li>
+
+      <!-- ---- Project ---- -->
+      <li>
+        <span>
+          <a class="link" href="https://github.com/annabelleywu/[repo]" target="_blank" rel="noopener">[Project Name]</a>
+          <span class="note">[One sentence: what it does. · Python, React]</span>
+        </span>
+        <span class="year">[Year]</span>
+      </li>
+
+    </ul>
+
+    <footer class="footer">© 2026 Annabelle Wu</footer>
+  </div>
+</body>
+</html>

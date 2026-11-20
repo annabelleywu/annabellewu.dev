@@ -1,170 +1,149 @@
 /* ===================================================================
-   style.css — all the visual styling for index.html
+   style.css — shared styling for ALL pages
+   (index.html, experience.html, projects.html)
    ===================================================================
    QUICK CUSTOMIZING
-   - All colors live in the ":root" block below. Change one value and
-     it updates everywhere on the site.
-   - --accent is the crimson used for the logo, Contact button, active
-     nav pill and links. --accent-soft is the pale pink pill behind
-     the active nav link.
+   - Colors, font and page width are in ":root" right below.
+     Change a value once and every page updates.
+   - --accent is the crimson (logo, active nav link, link hovers,
+     timeline dots).
    =================================================================== */
 
 /* ---------- 1. Colors, font, sizes ---------- */
 :root {
-  --bg:          #ffffff;   /* page background */
-  --text:        #1a1a1a;   /* headings / main text */
-  --text-dim:    #6b6b6b;   /* subtitles, years, locations */
-  --line:        #e5e5e5;   /* timeline line, card borders */
+  --bg:        #ffffff;   /* page background */
+  --text:      #161616;   /* main text */
+  --text-dim:  #8a8a8a;   /* years, locations, small notes */
+  --line:      #e6e6e6;   /* thin lines (timeline, underlines) */
+  --accent:    #9e1b32;   /* dark crimson — try #8b0000 (darker) or #b31b1b (brighter) */
 
-  --accent:      #9e1b32;   /* dark crimson — try #8b0000 (darker) or #b31b1b (brighter) */
-  --accent-dark: #7a1527;   /* button hover */
-  --accent-soft: #f9e8eb;   /* pale crimson pill behind active nav link */
-
-  --font: "Inter", system-ui, -apple-system, sans-serif;
-  --max-width: 1000px;      /* how wide the content gets */
+  --font: "DM Sans", system-ui, -apple-system, sans-serif;
+  --max-width: 780px;     /* width of the text column — smaller = more minimal */
 }
 
 /* ---------- 2. Base / reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; } /* offset for sticky nav */
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-weight: 300;             /* light weight = the airy look */
-  line-height: 1.6;
-  letter-spacing: .01em;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
 }
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
 a { color: inherit; text-decoration: none; }
-ul { list-style: none; margin: 0; padding: 0; }
-h1, h2, h3, p { margin: 0; }
-svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
-.container { max-width: var(--max-width); margin: 0 auto; padding-inline: 24px; }
+.page { max-width: var(--max-width); margin: 0 auto; padding: 0 24px 80px; }
 
-/* ---------- 3. Nav bar ---------- */
+/* Underlined text links (used inside paragraphs and lists).
+   Underline is thin & gray, turns crimson on hover. */
+.link {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: color .15s, text-decoration-color .15s;
+}
+.link:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+/* ---------- 3. Top nav (same on every page) ---------- */
 .nav {
-  position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
-  height: 80px; padding: 0 40px;
-  background: rgba(255,255,255,.9);
-  backdrop-filter: blur(8px);              /* frosted glass when scrolling */
+  padding: 32px 0;
 }
-.nav__logo { font-weight: 700; font-size: 1.6rem; color: var(--accent); letter-spacing: -.02em; }
+.nav__logo { font-weight: 700; font-size: 1.2rem; color: var(--accent); letter-spacing: -.02em; }
+.nav__links { display: flex; gap: 28px; font-size: .95rem; }
+.nav__links a { color: var(--text-dim); transition: color .15s; }
+.nav__links a:hover,
+.nav__links a.active { color: var(--accent); }   /* "active" = the page you're on */
 
-.nav__links { display: flex; gap: 8px; }
-.nav__links a {
-  padding: 10px 22px; border-radius: 999px;  /* 999px = fully rounded pill */
-  font-weight: 400; transition: background .2s, color .2s;
-}
-.nav__links a:hover  { color: var(--accent); }
-.nav__links a.active { background: var(--accent-soft); color: var(--accent); }
+/* ---------- 4. Hero (home page header) ---------- */
+.hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; padding: 56px 0 24px; }
+.hero__name { font-size: clamp(2.6rem, 8vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
+.hero__subtitle { color: var(--text-dim); font-size: 1.15rem; margin-top: 12px; }
 
-.nav__cta {
-  padding: 12px 28px; border-radius: 999px;
-  background: var(--accent); color: #fff; font-weight: 400;
-  transition: background .2s;
-}
-.nav__cta:hover { background: var(--accent-dark); }
+/* [github] [linkedin] [email] bracket links */
+.brackets { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 20px; font-size: .95rem; }
+.brackets a { color: var(--text-dim); transition: color .15s; }
+.brackets a:hover { color: var(--accent); }
+.brackets a::before { content: "["; }
+.brackets a::after  { content: "]"; }
 
-.nav__toggle { display: none; background: none; border: 0; font-size: 1.4rem; cursor: pointer; color: var(--text); }
-
-/* ---------- 4. Hero ---------- */
-.hero {
-  display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: center;
-  padding-top: 70px; padding-bottom: 60px;
-}
-.hero__name     { font-size: clamp(2.8rem, 8vw, 4.8rem); font-weight: 400; line-height: 1.1; letter-spacing: -.01em; }
-.hero__subtitle { font-size: clamp(1.1rem, 3vw, 1.6rem); color: var(--text-dim); letter-spacing: .04em; margin: 16px 0 36px; }
-
-.hero__meta { display: flex; flex-wrap: wrap; gap: 14px 36px; font-size: 1.05rem; }
-.hero__meta li { display: flex; align-items: center; gap: 10px; }
-.hero__meta a:hover { color: var(--accent); }
-
-.hero__socials { display: flex; gap: 24px; margin-top: 32px; color: var(--text-dim); }
-.hero__socials a:hover { color: var(--accent); }
-
-.hero__art { width: 100%; max-width: 260px; justify-self: end; }
-/* Dashed box shown until you add a real image (delete when you do) */
+/* Image placeholder — delete this block + the <div> in index.html
+   if you decide not to use a picture. */
+.hero__art { width: 150px; flex-shrink: 0; }
 .hero__art--placeholder {
-  aspect-ratio: 3 / 4; display: grid; place-items: center;
-  border: 1.5px dashed var(--accent); border-radius: 16px;
-  color: var(--accent); font-size: .9rem; opacity: .6;
+  aspect-ratio: 1; display: grid; place-items: center; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: 50%;
+  color: var(--text-dim); font-size: .75rem;
 }
 
-/* ---------- 5. Sections (shared) ---------- */
-.section { padding-top: 60px; padding-bottom: 60px; }
-.section__title { font-size: 1.9rem; font-weight: 400; margin-bottom: 40px; }
+/* ---------- 5. Sections ---------- */
+.section { padding-top: 56px; }
+/* Small bold UPPERCASE headings like "ABOUT" */
+.section__title {
+  font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.prose p + p { margin-top: 18px; }   /* space between About paragraphs */
 
-/* ---------- 6. Year timeline (Experience + School) ----------
-   Layout of each year-group:   [ year ]  •│  [ roles ]
-   The dot + vertical line are drawn with ::before / ::after below. */
-.year-group { display: grid; grid-template-columns: 180px 1fr; }
-.year { color: var(--text-dim); font-size: 1.1rem; letter-spacing: .06em; padding-top: 4px; }
+/* Page title on Experience / Projects pages */
+.page-title { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 700; letter-spacing: -.03em; padding-top: 40px; }
+.page-intro { color: var(--text-dim); margin-top: 8px; }
+
+/* ---------- 6. Row list (Education, Awards, Projects) ----------
+   Each row:  [ title + optional note ] ............ [ year ] */
+.rows li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  padding: 10px 0;
+}
+.rows .year { color: var(--text-dim); font-size: .9rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rows .note { display: block; color: var(--text-dim); font-size: .92rem; line-height: 1.55; margin-top: 2px; }
+.rows--spaced li { padding: 18px 0; }    /* roomier version used on Projects page */
+
+/* "See experience →" links at the bottom of the home page */
+.more { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-top: 56px; }
+.more a { color: var(--text-dim); transition: color .15s; }
+.more a:hover { color: var(--accent); }
+
+/* ---------- 7. Year timeline (Experience page) ----------
+   Layout of each year-group:   [ year ]  •│  [ roles ] */
+.timeline { padding-top: 40px; }
+.year-group { display: grid; grid-template-columns: 130px 1fr; }
+.year-group > .year { color: var(--text-dim); font-size: .95rem; padding-top: 2px; }
 
 .roles {
   position: relative;
-  padding-left: 70px; padding-bottom: 48px;
-  border-left: 1px solid var(--line);      /* the vertical line */
-  display: grid; gap: 36px;
+  padding-left: 44px; padding-bottom: 44px;
+  border-left: 1px solid var(--line);      /* vertical line */
+  display: grid; gap: 28px;
 }
-.year-group:last-child .roles { border-left-color: transparent; } /* line stops at the last year */
-.roles::before {                           /* the dot next to each year */
-  content: ""; position: absolute; left: -5px; top: 12px;
-  width: 9px; height: 9px; border-radius: 50%; background: var(--text);
+.year-group:last-child .roles { border-left-color: transparent; }  /* line ends at the last year */
+.roles::before {                           /* dot next to each year */
+  content: ""; position: absolute; left: -4px; top: 11px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
 }
 
-.role__title { font-size: 1.4rem; font-weight: 400; }
-.role__org   { font-size: 1.15rem; margin-top: 8px; }
-.role__place { color: var(--text-dim); margin-top: 4px; }
-.role__points { margin-top: 10px; color: var(--text-dim); }
-.role__points li { margin-bottom: 4px; }
-.role__points strong { font-weight: 500; color: var(--text); }
+.role__title { font-size: 1.1rem; font-weight: 500; line-height: 1.4; }
+.role__org   { margin-top: 2px; }
+.role__place { color: var(--text-dim); font-size: .92rem; }
+.role__points { color: var(--text-dim); font-size: .95rem; margin-top: 4px; }
 
-/* ---------- 7. Project cards ---------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-.card {
-  display: flex; flex-direction: column; gap: 12px;
-  padding: 28px; border: 1px solid var(--line); border-radius: 16px;
-  transition: border-color .2s, transform .2s;
-}
-.card:hover   { border-color: var(--accent); transform: translateY(-4px); }
-.card__title  { font-size: 1.3rem; font-weight: 400; }
-.card__desc   { color: var(--text-dim); flex: 1; }
-.card__tags   { display: flex; flex-wrap: wrap; gap: 8px; }
-.card__tags li { font-size: .8rem; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
-.card__links  { display: flex; gap: 20px; color: var(--accent); font-weight: 400; }
-.card__links a:hover { text-decoration: underline; }
+/* ---------- 8. Footer ---------- */
+.footer { color: var(--text-dim); font-size: .8rem; padding-top: 80px; }
 
-/* ---------- 8. Contact ---------- */
-.contact__text { color: var(--text-dim); max-width: 560px; margin-bottom: 28px; font-size: 1.1rem; }
-.btn {
-  display: inline-block; padding: 12px 28px; border-radius: 999px;
-  background: var(--accent); color: #fff; font-weight: 400; transition: background .2s;
-}
-.btn:hover { background: var(--accent-dark); }
-
-/* ---------- 9. Footer ---------- */
-.footer { text-align: center; padding: 40px 16px; color: var(--text-dim); font-size: .85rem; }
-
-/* ---------- 10. Phones & small screens ---------- */
-@media (max-width: 760px) {
-  .nav { padding: 0 16px; height: 64px; }
-  .nav__cta { padding: 8px 18px; font-size: .9rem; margin-left: auto; margin-right: 12px; }
-  .nav__toggle { display: block; }
-  .nav__links {                             /* nav turns into a drop-down */
-    position: absolute; top: 64px; left: 0; right: 0;
-    flex-direction: column; padding: 16px; background: var(--bg);
-    border-bottom: 1px solid var(--line); display: none;
-  }
-  .nav__links.open { display: flex; }
-
-  .container { padding-inline: 16px; }
-  .hero { grid-template-columns: 1fr; padding-top: 40px; }
-  .hero__art { justify-self: start; max-width: 180px; }
-
-  .year-group { grid-template-columns: 1fr; }   /* year sits above its roles */
-  .year { margin-bottom: 12px; }
-  .roles { padding-left: 28px; }
+/* ---------- 9. Phones ---------- */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .page { padding: 0 16px 60px; }
+  .nav { padding: 20px 0; }
+  .nav__links { gap: 18px; }
+  .hero { flex-direction: column-reverse; padding-top: 32px; }  /* image moves above name */
+  .hero__art { width: 100px; }
+  .year-group { grid-template-columns: 1fr; }
+  .year-group > .year { margin-bottom: 8px; }
+  .roles { padding-left: 24px; }
 }
