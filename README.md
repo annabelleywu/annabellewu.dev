@@ -1,11 +1,11 @@
 # annabelleywu.github.io
 
-My personal portfolio site, live at **https://annabelleywu.github.io**.
+My personal portfolio site, live at **https://annabellewu.dev**.
 
 ## How it works
 
 GitHub Pages serves the files in this repo as a website. No build tools
-or frameworks: it's plain HTML, CSS and a little JavaScript.
+or frameworks: it's plain HTML and CSS.
 
 ```
 index.html            ← home: about, education, recognition
